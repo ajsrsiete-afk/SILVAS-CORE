@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio | Armando J. Silvas - Silvas Core</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
 <body>
-
     <div class="main-container">
-        <!-- HEADER SECTION -->
         <header class="header">
             <h1 class="header-title">PORTAFOLIO</h1>
             <div class="name-banner">
@@ -22,23 +12,17 @@
             </nav>
         </header>
 
-        <!-- YO SOY SECTION -->
-        <section class="yo-soy-section">
+        <section class="yo-soy-section reveal">
             <div class="yo-soy-text">
                 <h3>YO SOY</h3>
                 <div class="description-card">
-                    Un solucionador de problemas, me gusta contar historias a través de lo que hago; 
-                    desde un logotipo hasta un video o una fotografía. Cada proyecto es una oportunidad 
-                    para transmitir el <strong>core</strong> de cada idea.
-                    <br><br>
-                    Estabilidad Emocional es mi secreto para entender las ideas y la innovación es la forma en que las hago atractivas y efectivas.
+                    Un solucionador de problemas, me gusta contar historias a través de lo que hago...
                 </div>
             </div>
             <div class="yo-soy-image"></div>
         </section>
 
-        <!-- SKILLS SECTION -->
-        <section class="skills-section">
+        <section class="skills-section reveal">
             <div class="skills-image"></div>
             <div class="skills-content">
                 <div class="icons-grid">
@@ -55,24 +39,19 @@
             </div>
         </section>
 
-        <!-- FOOTER SECTION -->
-        <footer class="footer">
-            <div class="footer-top">
-                <div class="badge-crecer">¡A SEGUIR CRECIENDO!</div>
-                <div class="footer-logo">
-                    <h4>S <span>SILVAS CORE</span></h4>
-                </div>
-            </div>
-            <div class="contact-bar">
-                <div class="contact-item">🌐 Armando J. Silvas</div>
-                <div class="contact-item">📧 silvasdesignworks@gmail.com</div>
-                <div class="contact-item">📞 +504 9839-4235</div>
-                <div class="contact-item">🔗 @Silvascore</div>
-                <div class="contact-item">in Armando J. Silvas</div>
-                <div class="contact-item">📍 Honduras</div>
-            </div>
-        </footer>
+        <footer class="footer reveal">
+            </footer>
     </div>
 
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
 </body>
-</html>
