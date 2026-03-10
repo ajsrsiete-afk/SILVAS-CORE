@@ -1,4 +1,4 @@
-/* Importación de fuentes y configuración */
+/* Configuración de fuentes */
 @font-face {
     font-family: 'Kodashan';
     src: local('Kodashan'), local('Kodashan-Regular');
@@ -13,10 +13,12 @@
     --kodashan: 'Kodashan', 'Segoe UI Semibold', sans-serif;
 }
 
+/* Reset Base */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -37,7 +39,7 @@ body {
 /* --- SECCIÓN 1: HEADER --- */
 .header {
     background: linear-gradient(135deg, #0d2b5b 0%, #1a4a94 100%);
-    height: 600px;
+    height: 650px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,7 +52,7 @@ body {
 
 .header-title {
     font-family: var(--impact);
-    font-size: 250px;
+    font-size: 220px;
     margin: 0;
     line-height: 0.8;
     letter-spacing: 10px;
@@ -66,7 +68,7 @@ body {
 
 .name-banner h2 {
     font-family: var(--impact);
-    font-size: 60px;
+    font-size: 55px;
     letter-spacing: 15px;
     margin: 0;
 }
@@ -75,8 +77,6 @@ body {
     display: flex;
     gap: 40px;
     animation: slideUp 0.8s ease-out 0.4s both;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 .nav-btn {
@@ -85,10 +85,8 @@ body {
     font-family: var(--impact);
     text-decoration: none;
     padding: 15px 50px;
-    font-size: 24px;
+    font-size: 22px;
     transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
 }
 
 .nav-btn:hover {
@@ -98,23 +96,38 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* --- LÓGICA DE REVELACIÓN (SCROLL) --- */
+.reveal {
+    opacity: 0;
+    transition: all 1s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+}
+
 /* --- SECCIÓN 2: YO SOY --- */
 .yo-soy-section {
     display: flex;
-    height: 700px;
+    height: 750px;
     align-items: center;
-    animation: fadeInUp 0.8s ease-out;
+    overflow: hidden;
 }
 
 .yo-soy-text {
     flex: 1;
     padding: 0 100px;
-    animation: slideInLeft 0.8s ease-out;
+    transform: translateX(-100px);
+    transition: transform 0.8s ease-out;
+}
+
+.active .yo-soy-text {
+    transform: translateX(0);
 }
 
 .yo-soy-text h3 {
     font-family: var(--kodashan);
-    font-size: 130px;
+    font-size: 110px;
     color: var(--medium-blue);
     margin-bottom: 30px;
 }
@@ -123,34 +136,33 @@ body {
     background-color: var(--medium-blue);
     color: white;
     padding: 50px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 28px;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 26px;
     line-height: 1.5;
-    max-width: 750px;
+    max-width: 700px;
     border-left: 15px solid var(--accent-blue);
-    box-shadow: 20px 20px 0px rgba(19, 58, 124, 0.2);
-    transition: all 0.3s ease;
-}
-
-.description-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 25px 25px 0px rgba(19, 58, 124, 0.3);
+    box-shadow: 20px 20px 0px rgba(19, 58, 124, 0.1);
 }
 
 .yo-soy-image {
     flex: 1;
     height: 100%;
-    background: url('https://via.placeholder.com/960x700') center/cover no-repeat;
+    background: url('https://via.placeholder.com/960x750') center/cover no-repeat;
     clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
-    animation: slideInRight 0.8s ease-out;
+    transform: translateX(100px);
+    transition: transform 0.8s ease-out;
+}
+
+.active .yo-soy-image {
+    transform: translateX(0);
 }
 
 /* --- SECCIÓN 3: SKILLS --- */
 .skills-section {
     background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
     display: flex;
-    height: 600px;
-    animation: fadeInUp 0.8s ease-out 0.2s both;
+    height: 650px;
+    overflow: hidden;
 }
 
 .skills-content {
@@ -160,14 +172,13 @@ body {
     flex-direction: column;
     justify-content: center;
     color: white;
-    animation: slideInRight 0.8s ease-out;
 }
 
 .icons-grid {
     display: grid;
     grid-template-columns: repeat(4, 120px);
     gap: 25px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .skill-tile {
@@ -183,27 +194,43 @@ body {
     font-size: 32px;
     font-family: 'Arial', sans-serif;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-    animation: popIn 0.5s ease-out;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* Retraso en cascada para los tiles */
+.active .skill-tile {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.skill-tile:nth-child(1) { transition-delay: 0.1s; }
+.skill-tile:nth-child(2) { transition-delay: 0.2s; }
+.skill-tile:nth-child(3) { transition-delay: 0.3s; }
+.skill-tile:nth-child(4) { transition-delay: 0.4s; }
+.skill-tile:nth-child(5) { transition-delay: 0.5s; }
+.skill-tile:nth-child(6) { transition-delay: 0.6s; }
+.skill-tile:nth-child(7) { transition-delay: 0.7s; }
+.skill-tile:nth-child(8) { transition-delay: 0.8s; }
+
 .skill-tile:hover {
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.25);
+    transform: scale(1.15) rotate(5deg);
+    background-color: var(--dark-blue);
+    color: white;
 }
 
 .skills-title {
     font-family: var(--kodashan);
-    font-size: 90px;
+    font-size: 80px;
     margin: 0;
     letter-spacing: 5px;
 }
 
 .skills-image {
     flex: 1;
-    background: url('https://via.placeholder.com/960x600') center/cover no-repeat;
+    background: url('https://via.placeholder.com/960x650') center/cover no-repeat;
     clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-    animation: slideInLeft 0.8s ease-out;
 }
 
 /* --- SECCIÓN 4: FOOTER --- */
@@ -211,39 +238,28 @@ body {
     background-color: var(--dark-blue);
     color: white;
     padding: 80px 100px;
-    animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 .footer-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
 .badge-crecer {
     border: 3px solid white;
     padding: 20px 40px;
     font-family: var(--impact);
-    font-size: 45px;
+    font-size: 40px;
     transform: rotate(-3deg);
     background-color: var(--medium-blue);
-    transition: all 0.3s ease;
-}
-
-.badge-crecer:hover {
-    transform: rotate(-3deg) scale(1.05);
-}
-
-.footer-logo {
-    text-align: right;
 }
 
 .footer-logo h4 {
     font-family: var(--impact);
-    font-size: 80px;
+    font-size: 70px;
     margin: 0;
-    animation: slideInRight 0.8s ease-out;
 }
 
 .footer-logo span {
@@ -253,227 +269,40 @@ body {
 .contact-bar {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 30px;
     border-top: 2px solid rgba(255, 255, 255, 0.1);
-    padding-top: 50px;
+    padding-top: 40px;
     font-family: 'Segoe UI', sans-serif;
-    font-size: 22px;
-    animation: fadeIn 0.8s ease-out 0.6s both;
+    font-size: 20px;
 }
 
 .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
 .contact-item:hover {
-    transform: translateX(10px);
     color: var(--accent-blue);
+    transform: translateX(10px);
 }
 
-/* --- ANIMATIONS --- */
+/* --- KEYFRAMES --- */
 @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-@keyframes popIn {
-    from {
-        opacity: 0;
-        transform: scale(0);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* RESPONSIVE DESIGN */
-@media (max-width: 1024px) {
-    .header-title {
-        font-size: 150px;
-    }
-
-    .yo-soy-text {
-        padding: 0 50px;
-    }
-
-    .yo-soy-text h3 {
-        font-size: 80px;
-    }
-
-    .skills-content {
-        padding: 0 50px;
-    }
-
-    .footer {
-        padding: 50px;
-    }
-}
-
-@media (max-width: 768px) {
-    .main-container {
-        max-width: 100%;
-    }
-
-    .header {
-        height: auto;
-        padding: 40px 20px;
-    }
-
-    .header-title {
-        font-size: 80px;
-    }
-
-    .name-banner {
-        padding: 10px 30px;
-    }
-
-    .name-banner h2 {
-        font-size: 32px;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav-btn {
-        padding: 10px 30px;
-        font-size: 16px;
-    }
-
-    .yo-soy-section {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .yo-soy-text {
-        padding: 40px 20px;
-    }
-
-    .yo-soy-text h3 {
-        font-size: 60px;
-    }
-
-    .description-card {
-        font-size: 18px;
-        padding: 30px;
-    }
-
-    .yo-soy-image {
-        height: 400px;
-    }
-
-    .skills-section {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .skills-image {
-        height: 300px;
-    }
-
-    .skills-content {
-        padding: 40px 20px;
-    }
-
-    .icons-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .skill-tile {
-        width: 80px;
-        height: 80px;
-        font-size: 24px;
-    }
-
-    .skills-title {
-        font-size: 50px;
-    }
-
-    .contact-bar {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-top {
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .footer-logo h4 {
-        font-size: 50px;
-    }
+/* --- RESPONSIVE PARA PORTÁTILES --- */
+@media (max-width: 1440px) {
+    .header-title { font-size: 150px; }
+    .yo-soy-text h3 { font-size: 80px; }
 }
