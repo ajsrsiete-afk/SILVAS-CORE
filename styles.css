@@ -1,0 +1,412 @@
+@font-face {
+    font-family: 'Kodashon';
+    src: url('fonts/Kodashon.woff2') format('woff2'),
+         url('fonts/Kodashon.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Kodashon', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* HEADER SECTION */
+.header {
+    background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.header-title {
+    font-family: 'Impact', sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}
+
+.name-banner {
+    font-family: 'Impact', sans-serif;
+    background: #3FA9F5;
+    color: white;
+    padding: 15px 30px;
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    border-radius: 5px;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    font-family: 'Impact', sans-serif;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-btn:hover {
+    background: #3FA9F5;
+    border-color: #3FA9F5;
+}
+
+/* ABOUT SECTION */
+.about {
+    padding: 80px 20px;
+    background: white;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-family: 'Impact', sans-serif;
+    font-size: 2.5rem;
+    color: #3FA9F5;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.about-text p {
+    font-family: 'Kodashon', sans-serif;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.about-image {
+    position: relative;
+}
+
+.about-image::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    right: -30px;
+    bottom: -30px;
+    background: linear-gradient(135deg, #3FA9F5 0%, #1a3a52 100%);
+    transform: skewY(-3deg);
+    z-index: -1;
+    border-radius: 10px;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+/* SOCIAL SECTION */
+.social-section {
+    background: linear-gradient(135deg, #3FA9F5 0%, #2d8fc4 100%);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.social-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-section h2 {
+    font-family: 'Impact', sans-serif;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.social-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.social-icon {
+    background: rgba(255, 255, 255, 0.2);
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.social-icon:hover {
+    background: white;
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* SKILLS SECTION */
+.skills {
+    background: #1a3a52;
+    color: white;
+    padding: 80px 20px;
+}
+
+.skills-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.skills-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.skills-content h2 {
+    font-family: 'Impact', sans-serif;
+    font-size: 2.5rem;
+    color: #3FA9F5;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.skill-item {
+    background: rgba(63, 169, 245, 0.1);
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    border-left: 4px solid #3FA9F5;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    background: rgba(63, 169, 245, 0.2);
+    transform: translateX(10px);
+}
+
+.skill-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.skill-item p {
+    font-family: 'Kodashon', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* CTA SECTION */
+.cta {
+    background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta h2 {
+    font-family: 'Impact', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.cta p {
+    font-family: 'Kodashon', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-button {
+    font-family: 'Impact', sans-serif;
+    background: #3FA9F5;
+    color: white;
+    padding: 18px 50px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+}
+
+.cta-button:hover {
+    background: #2d8fc4;
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.footer-social {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.footer-social a {
+    font-family: 'Kodashon', sans-serif;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.footer-social a:hover {
+    color: #3FA9F5;
+    border-bottom-color: #3FA9F5;
+}
+
+.branding {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.branding p {
+    font-family: 'Impact', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.tagline {
+    font-family: 'Kodashon', sans-serif;
+    font-size: 0.9rem;
+    color: #3FA9F5;
+    margin-top: 5px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 2.5rem;
+    }
+
+    .name-banner {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+    }
+
+    .nav-buttons {
+        flex-direction: column;
+    }
+
+    .about-container,
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-text h2,
+    .skills-content h2,
+    .cta h2 {
+        font-size: 1.8rem;
+    }
+
+    .social-icons {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+    }
+
+    .social-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 2rem;
+    }
+
+    .about,
+    .social-section,
+    .skills,
+    .cta {
+        padding: 40px 15px;
+    }
+
+    .social-icons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer-social {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
